@@ -42,5 +42,4 @@ for w in worksheets:
         data_matrix.append([phone_string, web_string, add_string])
         phone_string = ""
 
-    print(data_matrix)
     w.update_values("B:D", data_matrix)  # Update cell range

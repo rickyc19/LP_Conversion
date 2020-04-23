@@ -31,7 +31,6 @@ list_function(add_cells, add_list)
 
 # Remove phone numbers, websites, and addresses from list items
 for i, l in enumerate(orig_list):
-    print(l)
 
     try:
         if phone_list[i] in l:
@@ -48,7 +47,6 @@ for i, l in enumerate(orig_list):
             l = l.replace(add_list[i], "")
     except: pass
 
-    print(l)
     data_matrix.append([l])
 
 spreadsheet.sheet1.update_values("A:A", data_matrix)
