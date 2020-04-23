@@ -1,7 +1,7 @@
 import pygsheets
 
 client = pygsheets.authorize(client_secret='oauth.json')
-spreadsheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1wGJsJ-1__0NTm_5qDZxQuk_d4HWVUUYp0toxC9X8zhI/edit#gid=0")
+spreadsheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1CIpWBZXAK_PqsEq2vLlFklT2MgQjH008qbxgPYXbRtU/edit#gid=0")
 worksheets = spreadsheet.worksheets()
 
 # Cell columns
