@@ -11,3 +11,4 @@ cells = sheet.get_col(1, include_tailing_empty=False, returnas='cells')
 final_sheet = create_matrix(cells)
 # Get necessary info from data matrix and put in correct columns
 find_info(final_sheet, sheet)
+

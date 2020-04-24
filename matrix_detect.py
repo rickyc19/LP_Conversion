@@ -29,3 +29,4 @@ def find_info(value_matrix, sheet):
         phone_string = ""
 
     sheet.update_values("C:H", data_matrix)  # Update cell range with found values
+
