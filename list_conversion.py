@@ -39,4 +39,3 @@ for l in value_list:
     phone_string = ""
 
 sheet.update_values("B:D", data_matrix)  # Update cell range
-
