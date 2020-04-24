@@ -5,7 +5,8 @@ import pyap
 import os
 
 client = pygsheets.authorize(client_secret='oauth.json')
-spreadsheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1CIpWBZXAK_PqsEq2vLlFklT2MgQjH008qbxgPYXbRtU/edit#gid=0")
+spreadsheet = \
+    client.open_by_url("https://docs.google.com/spreadsheets/d/1CIpWBZXAK_PqsEq2vLlFklT2MgQjH008qbxgPYXbRtU/edit#gid=0")
 sheet = spreadsheet.sheet1
 
 cells = sheet.get_col(1, include_tailing_empty=False, returnas='cells')
@@ -23,7 +24,14 @@ row = 0
 # For each cell: highlighted ones are a new row for final sheet, others are information for the 2nd cell of same row.
 for c in cells:
     if c.color == (0.8509804, 0.91764706, 0.827451, 0):
-        final_sheet.append([c.value, ''])
-        row += 1
+        if final_sheet[row][1]:
+            final_sheet.append([c.value, ''])
+            row += 1
+        # If we haven't added any information on the program yet (even a blank row) then this line must be more title
+        else:
+            final_sheet[row][0] += ' ' + c.value
+        # TODO: Distinguish between consecutive single line programs and titles split over multiple lines
     else:
-        final_sheet[row][1] += c.value + ', '  # This adds a excess comma and space at the end of the string.
+        if final_sheet[row][1]:
+            final_sheet[row][1] += ', '
+        final_sheet[row][1] += c.value
